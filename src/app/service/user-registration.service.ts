@@ -22,7 +22,7 @@ export class UserRegistrationService {
             Value: user.email
         };
         let dataUserType = {
-            Name: 'userType',
+            Name: 'custom:userType',
             Value: String(user.userType)
         };
         attributeList.push(new CognitoUserAttribute(dataEmail));
@@ -52,6 +52,7 @@ export class UserRegistrationService {
             if (err) {
                 callback.cognitoCallback(err.message, null);
             } else {
+                console.log(result, 'confirmRegistration - result')
                 callback.cognitoCallback(null, result);
             }
         });
@@ -69,6 +70,7 @@ export class UserRegistrationService {
             if (err) {
                 callback.cognitoCallback(err.message, null);
             } else {
+                console.log(result, 'reresendConfirmationCode - result')
                 callback.cognitoCallback(null, result);
             }
         });
