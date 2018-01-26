@@ -1,6 +1,5 @@
 import {environment} from "../../environments/environment";
 import {Injectable} from "@angular/core";
-import {DynamoDBService} from "./ddb.service";
 import {CognitoCallback, CognitoUtil, LoggedInCallback} from "./cognito.service";
 import {AuthenticationDetails, CognitoUser} from "amazon-cognito-identity-js";
 import * as AWS from "aws-sdk/global";
@@ -9,7 +8,7 @@ import * as STS from "aws-sdk/clients/sts";
 @Injectable()
 export class UserLoginService {
 
-    constructor(public ddb: DynamoDBService, public cognitoUtil: CognitoUtil) {
+    constructor(public cognitoUtil: CognitoUtil) {
     }
 
     authenticate(username: string, password: string, callback: CognitoCallback) {
@@ -107,7 +106,6 @@ export class UserLoginService {
 
     logout() {
         console.log("UserLoginService: Logging out");
-        this.ddb.writeLogEntry("logout");
         this.cognitoUtil.getCurrentUser().signOut();
 
     }

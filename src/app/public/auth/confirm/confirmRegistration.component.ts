@@ -53,6 +53,7 @@ export class RegistrationConfirmationComponent implements OnInit, OnDestroy {
 
     onConfirmRegistration() {
         this.errorMessage = null;
+        console.log(this.email, this.confirmationCode, 'this.email, this.confirmationCode')
         this.regService.confirmRegistration(this.email, this.confirmationCode, this);
     }
 

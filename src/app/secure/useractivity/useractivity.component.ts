@@ -2,7 +2,6 @@ import {Component} from "@angular/core";
 import {UserLoginService} from "../../service/user-login.service";
 import {LoggedInCallback} from "../../service/cognito.service";
 import {Router} from "@angular/router";
-import {DynamoDBService} from "../../service/ddb.service";
 
 
 export class Stuff {
@@ -18,7 +17,7 @@ export class UseractivityComponent implements LoggedInCallback {
 
     public logdata: Array<Stuff> = [];
 
-    constructor(public router: Router, public ddb: DynamoDBService, public userService: UserLoginService) {
+    constructor(public router: Router, public userService: UserLoginService) {
         this.userService.isAuthenticated(this);
         console.log("in UseractivityComponent");
     }
@@ -28,7 +27,6 @@ export class UseractivityComponent implements LoggedInCallback {
             this.router.navigate(['/home/login']);
         } else {
             console.log("scanning DDB");
-            this.ddb.getLogEntries(this.logdata);
         }
     }
 

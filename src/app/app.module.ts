@@ -14,7 +14,6 @@ import {UseractivityComponent} from "./secure/useractivity/useractivity.componen
 import {MyProfileComponent} from "./secure/profile/myprofile.component";
 import {SecureHomeComponent} from "./secure/landing/securehome.component";
 import {JwtComponent} from "./secure/jwttokens/jwt.component";
-import {DynamoDBService} from "./service/ddb.service";
 import {LoginComponent} from "./public/auth/login/login.component";
 import {RegisterComponent} from "./public/auth/register/registration.component";
 import {ForgotPassword2Component, ForgotPasswordStep1Component} from "./public/auth/forgot/forgotPassword.component";
@@ -51,7 +50,6 @@ import {NewPasswordComponent} from "./public/auth/newpassword/newpassword.compon
     providers: [
         CognitoUtil,
         AwsUtil,
-        DynamoDBService,
         UserRegistrationService,
         UserLoginService,
         UserParametersService],

@@ -4,9 +4,9 @@ import {UserRegistrationService} from "../../../service/user-registration.servic
 import {CognitoCallback} from "../../../service/cognito.service";
 
 export class RegistrationUser {
-    name: string;
     email: string;
     password: string;
+    userType: string;
 }
 /**
  * This component is responsible for displaying and controlling
@@ -33,6 +33,7 @@ export class RegisterComponent implements CognitoCallback {
 
     onRegister() {
         this.errorMessage = null;
+        console.log(this.registrationUser, 'this.registrationUser')
         this.userRegistration.register(this.registrationUser, this);
     }
 
