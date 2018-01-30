@@ -20,6 +20,11 @@ import {ForgotPassword2Component, ForgotPasswordStep1Component} from "./public/a
 import {LogoutComponent, RegistrationConfirmationComponent} from "./public/auth/confirm/confirmRegistration.component";
 import {ResendCodeComponent} from "./public/auth/resend/resendCode.component";
 import {NewPasswordComponent} from "./public/auth/newpassword/newpassword.component";
+import { CreateQuestionComponent } from './secure/creators/create-question/create-question.component';
+import { ViewContentsComponent } from './secure/creators/view-contents/view-contents.component';
+import { ContentService } from './secure/creators/content.service';
+import { getUserToken } from './service/getUserToken.service';
+
 
 
 @NgModule({
@@ -36,10 +41,12 @@ import {NewPasswordComponent} from "./public/auth/newpassword/newpassword.compon
         HomeLandingComponent,
         HomeComponent,
         UseractivityComponent,
+        CreateQuestionComponent,
         MyProfileComponent,
         SecureHomeComponent,
         JwtComponent,
-        AppComponent
+        AppComponent,
+        ViewContentsComponent
     ],
     imports: [
         BrowserModule,
@@ -52,7 +59,9 @@ import {NewPasswordComponent} from "./public/auth/newpassword/newpassword.compon
         AwsUtil,
         UserRegistrationService,
         UserLoginService,
-        UserParametersService],
+        UserParametersService,
+        getUserToken,
+        ContentService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

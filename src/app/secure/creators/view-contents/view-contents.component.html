@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="pull-left">
+    <h2>Contents</h2>
+  </div>
+  <div class="pull-right">
+    <br>
+    <button type="button" class="btn btn-default">Create New Content</button>
+  </div>
+  <table class="table">
+    <tr *ngFor="let content of contents">
+      <div>
+        <h4> {{ content.title }} </h4>
+        <p>
+          {{ content.content }}
+        </p>
+        <div>
+          <button type="button" class="btn btn-primary" *ngFor="let tag of content.tags">
+            {{ tag }}
+          </button>
+          <div class="pull-right">
+            <button type="button" class="btn btn-default">Edit</button>
+          </div>
+        </div>
+      </div>
+    </tr>
+  </table>
+</div>

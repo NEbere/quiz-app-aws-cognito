@@ -19,6 +19,7 @@
       "prefix": "app",
       "mobile": false,
       "styles": [
+        "assets/css/bootstrap.min.css",
         "styles.css"
       ],
       "scripts": [],

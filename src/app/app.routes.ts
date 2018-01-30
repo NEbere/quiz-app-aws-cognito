@@ -11,6 +11,8 @@ import {ForgotPassword2Component, ForgotPasswordStep1Component} from "./public/a
 import {LogoutComponent, RegistrationConfirmationComponent} from "./public/auth/confirm/confirmRegistration.component";
 import {ResendCodeComponent} from "./public/auth/resend/resendCode.component";
 import {NewPasswordComponent} from "./public/auth/newpassword/newpassword.component";
+import { CreateQuestionComponent } from './secure/creators/create-question/create-question.component';
+import { ViewContentsComponent } from './secure/creators/view-contents/view-contents.component';
 
 const homeRoutes: Routes = [
     {
@@ -48,7 +50,26 @@ const secureHomeRoutes: Routes = [
         {path: 'jwttokens', component: JwtComponent},
         {path: 'myprofile', component: MyProfileComponent},
         {path: 'useractivity', component: UseractivityComponent},
+        {path: 'create-content', component: CreateQuestionComponent},
+        {path: 'view-contents', component: ViewContentsComponent},
         {path: '', component: MyProfileComponent}]
+    }
+];
+
+
+const viewersHomeRoutes: Routes = [
+    {
+        // path: '',
+        // redirectTo: '/securehome',
+        // pathMatch: 'full'
+    },
+    {
+        // path: 'securehome', component: SecureHomeComponent, children: [
+        // {path: 'logout', component: LogoutComponent},
+        // {path: 'jwttokens', component: JwtComponent},
+        // {path: 'myprofile', component: MyProfileComponent},
+        // {path: 'useractivity', component: UseractivityComponent},
+        // {path: '', component: MyProfileComponent}]
     }
 ];
 
