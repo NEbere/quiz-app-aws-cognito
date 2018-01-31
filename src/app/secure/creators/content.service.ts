@@ -44,6 +44,31 @@ export class ContentService {
         })
         .catch(this.handleError);
     }
+
+    getContent(id: string): Promise<any> {
+        this.headers.append('user', this.idToken)
+        // this.headers.append('Access-Control-Allow-Origin', '*')
+        let options = new RequestOptions({ headers : this.headers });
+        const url = `${this.API_URL}/docs/?id=${id}`;
+
+        return this.http.get(url, options)
+          .toPromise()
+          .then(response => response.json().data as any)
+          .catch(this.handleError);
+      }
+
+    updateContent(content: any): Promise<any> {
+        this.headers.append('user', this.idToken)
+        let options = new RequestOptions({ headers : this.headers });
+        const url = `${this.API_URL}/docs/?id=${content.id}`;
+
+        return this.http
+          .put(url, JSON.stringify(content), options)
+          .toPromise()
+          .then(() => content)
+          .catch(this.handleError);
+      }
+    
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error);
         return Promise.reject(error.message || error);

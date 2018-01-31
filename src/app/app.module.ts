@@ -22,9 +22,9 @@ import {ResendCodeComponent} from "./public/auth/resend/resendCode.component";
 import {NewPasswordComponent} from "./public/auth/newpassword/newpassword.component";
 import { CreateQuestionComponent } from './secure/creators/create-question/create-question.component';
 import { ViewContentsComponent } from './secure/creators/view-contents/view-contents.component';
+import { ContentDetailComponent }  from './secure/creators/view-contents/content-detail.component';
 import { ContentService } from './secure/creators/content.service';
 import { getUserToken } from './service/getUserToken.service';
-
 
 
 @NgModule({
@@ -46,7 +46,9 @@ import { getUserToken } from './service/getUserToken.service';
         SecureHomeComponent,
         JwtComponent,
         AppComponent,
-        ViewContentsComponent
+        ViewContentsComponent,
+        ContentDetailComponent
+        
     ],
     imports: [
         BrowserModule,

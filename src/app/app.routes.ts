@@ -13,6 +13,7 @@ import {ResendCodeComponent} from "./public/auth/resend/resendCode.component";
 import {NewPasswordComponent} from "./public/auth/newpassword/newpassword.component";
 import { CreateQuestionComponent } from './secure/creators/create-question/create-question.component';
 import { ViewContentsComponent } from './secure/creators/view-contents/view-contents.component';
+import { ContentDetailComponent } from './secure/creators/view-contents/content-detail.component';
 
 const homeRoutes: Routes = [
     {
@@ -52,6 +53,7 @@ const secureHomeRoutes: Routes = [
         {path: 'useractivity', component: UseractivityComponent},
         {path: 'create-content', component: CreateQuestionComponent},
         {path: 'view-contents', component: ViewContentsComponent},
+        {path: 'detail/:id', component: ContentDetailComponent},
         {path: '', component: MyProfileComponent}]
     }
 ];

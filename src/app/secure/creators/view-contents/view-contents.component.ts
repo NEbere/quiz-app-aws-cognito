@@ -8,7 +8,8 @@ import {Content,  ContentService} from '../content.service'
   styleUrls: ['./view-content.component.css']
 })
 export class ViewContentsComponent implements OnInit {
-  contents: Content[];
+  contents: Content;
+  selectedContent: Content;
 
   constructor( 
     private contentService: ContentService,
@@ -26,6 +27,14 @@ export class ViewContentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getQuestions();
+  }
+
+  onSelect(content: Content): void {
+    this.selectedContent = content;
+  }
+
+  gotoDetail(): void {
+    this.router.navigate(['securehome/detail', this.selectedContent.id]);
   }
 
 }
