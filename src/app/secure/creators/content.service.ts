@@ -64,19 +64,15 @@ export class ContentService {
       }
 
     updateContent(content: any): Promise<any> {
-        console.log('about to make post request with: ', content)
-        this.headers.append('user', this.idToken)
         this.headers.append('Content-Type', 'application/json')
         let options = new RequestOptions({ headers : this.headers });
-        
-        console.log(this.headers, 'hearder - updateContent')
+
         const url = `${this.API_URL}/docs/?id=${content.id}`;
 
         return this.http.put(url, JSON.stringify(content), options)
           .toPromise()
           .then((response) => {
-            //   content; 
-              console.log(response)
+              content; 
             })
           .catch(this.handleError);
       }
