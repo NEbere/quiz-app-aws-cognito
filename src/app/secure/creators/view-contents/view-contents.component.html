@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row"  *ngIf="contents">
   <div class="pull-left">
     <h2>Contents</h2>
   </div>
@@ -7,7 +7,7 @@
     <button type="button" class="btn btn-default">Create New Content</button>
   </div>
   <table class="table">
-    <tr *ngFor="let content of contents" [class.selected]="content === selectedContent">
+    <tr *ngFor="let content of contents">
       <div>
         <h4> {{ content.title }} </h4>
         <p>
@@ -18,7 +18,7 @@
             {{ tag }}
           </button>
           <div class="pull-right">
-            <button type="button" class="btn btn-default" (click)="onSelect(content)">Edit</button>
+            <button type="button" class="btn btn-default" (click)="gotoDetail(content)">Edit</button>
           </div>
         </div>
       </div>
@@ -26,9 +26,3 @@
   </table>
 </div>
 
-<div *ngIf="selectedContent">
-    <h2>
-      {{selectedContent.title | uppercase}} is my hero
-    </h2>
-    <button (click)="gotoDetail()">View Details</button>
-  </div>

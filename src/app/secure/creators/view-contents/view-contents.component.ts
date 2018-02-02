@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router } from '@angular/router';   
 import {Content,  ContentService} from '../content.service' 
 
 @Component({
@@ -15,25 +15,23 @@ export class ViewContentsComponent implements OnInit {
     private contentService: ContentService,
     private router: Router
   ) { }
-
-  getQuestions(): void{
+  
+  ngOnInit(): void {
+    this.getContents();
+  }
+  getContents(): void{
     this.contentService
     .getContents()
-    .then(response => {
-      console.log(response, 'response from view questions component')
-      this.contents = response.items
-    })
+    .then(response => this.contents = response.items)
   }
 
-  ngOnInit(): void {
-    this.getQuestions();
-  }
 
-  onSelect(content: Content): void {
+  // ngOnInit(): void {
+  //   this.getContents();
+  // }
+
+  gotoDetail(content: Content): void {
     this.selectedContent = content;
-  }
-
-  gotoDetail(): void {
     this.router.navigate(['securehome/detail', this.selectedContent.id]);
   }
 

@@ -52,8 +52,8 @@ const secureHomeRoutes: Routes = [
         {path: 'myprofile', component: MyProfileComponent},
         {path: 'useractivity', component: UseractivityComponent},
         {path: 'create-content', component: CreateQuestionComponent},
-        {path: 'view-contents', component: ViewContentsComponent},
         {path: 'detail/:id', component: ContentDetailComponent},
+        {path: 'view-contents', component: ViewContentsComponent},
         {path: '', component: MyProfileComponent}]
     }
 ];

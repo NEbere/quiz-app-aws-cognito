@@ -1,14 +1,20 @@
-content-
-<!-- <div *ngIf="content"> content -->
-<div>
+<div *ngIf="content">
     <h2>{{content.title}} details!</h2>
     <div>
-        <label>id: </label>{{content.title}}</div>
-    <div>
-        <label>name: </label>
-        <input [(ngModel)]="content.title" placeholder="name" />
+        <label>Title: </label>
+        <input [(ngModel)]="content.title" placeholder="name" /> 
+        <br>
+        <label>Content: </label>
+        <input [(ngModel)]="content.content" placeholder="name" /> 
+        <br>
+        <p><span>Separate each tag with a comma</span></p>
+        <label>Tags: </label>
+        <input [(ngModel)]="content.tags" placeholder="name" /> 
+        <br>
     </div>
-    <button (click)="goBack()">Back</button>
+    <button (click)="goBack()">go back</button>
+    <!-- <button (click)="goBack()" type="button">Back</button> -->
+    <!-- <button [routerLink]="['/securehome/view-contents']" type="button">Back</button> -->
     <button (click)="save()">Save</button>
 </div>
 

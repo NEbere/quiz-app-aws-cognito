@@ -45,9 +45,10 @@ import { getUserToken } from './service/getUserToken.service';
         MyProfileComponent,
         SecureHomeComponent,
         JwtComponent,
-        AppComponent,
+        ContentDetailComponent,
         ViewContentsComponent,
-        ContentDetailComponent
+        AppComponent,
+        
         
     ],
     imports: [

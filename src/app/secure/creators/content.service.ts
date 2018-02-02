@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
 import {Callback, CognitoUtil} from '../../service/cognito.service';
 import 'rxjs/Rx';
-
+import { of } from 'rxjs/observable/of';
 
 export class Content {
     constructor(
@@ -33,9 +33,7 @@ export class ContentService {
 
     getContents(): Promise<any> {
         this.headers.append('user', this.idToken)
-
         let options = new RequestOptions({ headers : this.headers });
-        console.log(this.headers, 'this.headers')
 
         return this.http.get(`${this.API_URL}/docs`, options)
         .toPromise()
@@ -46,26 +44,40 @@ export class ContentService {
     }
 
     getContent(id: string): Promise<any> {
-        this.headers.append('user', this.idToken)
-        // this.headers.append('Access-Control-Allow-Origin', '*')
         let options = new RequestOptions({ headers : this.headers });
-        const url = `${this.API_URL}/docs/?id=${id}`;
-
-        return this.http.get(url, options)
+        console.log(this.headers, 'headers in get content')
+        return this.http.get(`${this.API_URL}/docs/?id=${id}`, options)
           .toPromise()
-          .then(response => response.json().data as any)
+          .then(response => {
+              return response.json().body as any
+            })
+          .catch(this.handleError);
+      }
+
+    createContent(content: any): Promise<any> {
+        let options = new RequestOptions({ headers : this.headers });
+        return this.http
+          .post(`${this.API_URL}/docs/`, JSON.stringify(content), options)
+          .toPromise()
+          .then(res => res.json().data as any)
           .catch(this.handleError);
       }
 
     updateContent(content: any): Promise<any> {
+        console.log('about to make post request with: ', content)
         this.headers.append('user', this.idToken)
+        this.headers.append('Content-Type', 'application/json')
         let options = new RequestOptions({ headers : this.headers });
+        
+        console.log(this.headers, 'hearder - updateContent')
         const url = `${this.API_URL}/docs/?id=${content.id}`;
 
-        return this.http
-          .put(url, JSON.stringify(content), options)
+        return this.http.put(url, JSON.stringify(content), options)
           .toPromise()
-          .then(() => content)
+          .then((response) => {
+            //   content; 
+              console.log(response)
+            })
           .catch(this.handleError);
       }
     
