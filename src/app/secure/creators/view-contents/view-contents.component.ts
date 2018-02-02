@@ -3,13 +3,13 @@ import { Router } from '@angular/router';
 import {Content,  ContentService} from '../content.service' 
 
 @Component({
-  selector: 'app-view-questions',
+  selector: 'app-view-contents',
   templateUrl: './view-contents.component.html',
   styleUrls: ['./view-content.component.css']
 })
 export class ViewContentsComponent implements OnInit {
   contents: Content;
-  selectedContent: Content;
+  selectedContent: any;
 
   constructor( 
     private contentService: ContentService,
@@ -25,15 +25,14 @@ export class ViewContentsComponent implements OnInit {
     .then(response => this.contents = response.items)
   }
 
-
-  // ngOnInit(): void {
-  //   this.getContents();
-  // }
-
-  gotoDetail(content: Content): void {
+  gotoDetail(content: any): void {
     this.selectedContent = content;
     this.router.navigate(['securehome/detail', this.selectedContent.id]);
   }
 
+  goToCreatePage(): void {
+    this.router.navigate(['securehome/create-content']);
+    window.location.reload()
+  }
 }
 

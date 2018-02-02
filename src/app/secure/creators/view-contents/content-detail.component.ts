@@ -1,5 +1,5 @@
 import 'rxjs/add/operator/switchMap';
-import { Component, OnInit }      from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import 'rxjs/add/operator/toPromise';
@@ -10,32 +10,33 @@ import { Content, ContentService } from '../content.service';
 @Component({
   selector: 'hero-detail',
   templateUrl: './content-detail.component.html',
-  styleUrls: [ './content-detail.component.css' ]
+  styleUrls: ['./content-detail.component.css']
 })
 
 export class ContentDetailComponent implements OnInit {
-  content: Content;
+  content: any;
 
   constructor(
     private contentService: ContentService,
     private route: ActivatedRoute,
     private router: Router,
     private location: Location
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-      this.route.params
+    this.route.params
       .switchMap((params: Params) => this.contentService.getContent(params['id']))
       .subscribe(content => this.content = content);
   }
 
   save(): void {
-    console.log(this.content, 'content from save')
+    let tagsArray = this.content.tags.split(",")
+    let responsesArray = this.content.responses.split(",")
+    this.content.tags = tagsArray
+    this.content.response = responsesArray
     this.contentService.updateContent(this.content)
-    .then(() => this.goBack());
-
-      // this.router.navigate(['securehome/view-contents']);
-    }
+      .then(() => this.goBack());
+  }
 
   goBack(): void {
     this.router.navigate(['securehome/view-contents']);
