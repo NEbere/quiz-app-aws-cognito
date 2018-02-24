@@ -27,7 +27,6 @@ export class IdTokenCallback implements Callback {
     }
   
     callbackWithParam(result) {
-        console.log(result , 'this.jwt.idToken ')
         this.userToken.idToken = result;
     }
   }

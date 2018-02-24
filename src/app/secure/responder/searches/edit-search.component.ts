@@ -5,15 +5,15 @@ import { Location } from '@angular/common';
 import 'rxjs/add/operator/toPromise';
 
 
-import { Content, ContentService } from '../content.service';
+import { Content, ContentService } from '../../creators/content.service';
 
 @Component({
-  selector: 'hero-detail',
-  templateUrl: './content-detail.component.html',
-  styleUrls: ['./content-detail.component.css']
+  selector: 'edit-detail',
+  templateUrl: './edit-search.component.html',
+  styleUrls: ['./edit-search.component.css']
 })
 
-export class ContentDetailComponent implements OnInit {
+export class EditSearchComponent implements OnInit {
   content: any;
 
   constructor(

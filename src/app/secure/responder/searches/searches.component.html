@@ -1,0 +1,36 @@
+<h2>Create a search</h2>
+<div class="">
+<form #createSearchForm="ngForm">
+  <div class="form-group">
+      <p><span>Separate each tag with a comma</span></p>
+    <label for="tags">Tags</label><br>
+    <input type="text" class="form-control" id="tags"  [(ngModel)]="searchTags" name="tags" required>
+  </div>
+  <br>
+  <button type="submit" class="btn btn-success" (click)="searchContents(searchTags)">Search</button>
+  <button type="submit" class="btn btn-success" (click)="saveSearch(searchTags)">Save Search</button>
+
+</form>
+</div>
+
+
+<div class="row"  *ngIf="searchResults">
+  <div class="pull-left">
+    <h2>Search results</h2>
+  </div>
+  <table class="table">
+    <tr *ngFor="let content of searchResults">
+      <div>
+        <h4> {{ content.title }} </h4>
+        <p>
+          {{ content.content }}
+        </p>
+        <div>
+          <button type="button" class="btn btn-primary" *ngFor="let tag of content.tags">
+            {{ tag }}
+          </button>
+        </div>
+      </div>
+    </tr>
+  </table>
+</div>

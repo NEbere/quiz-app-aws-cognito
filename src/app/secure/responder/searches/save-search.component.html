@@ -1,0 +1,16 @@
+<div *ngIf="searchTags">
+    <h2>Save search</h2>
+    <div>
+        <label>Title: </label>
+        <input [(ngModel)]="title" placeholder="Title" />
+        <br>
+        <p>
+            <span>Separate each tag with a comma</span>
+        </p>
+        <label>Tags: </label>
+        <input [(ngModel)]="searchTags" placeholder="Content" readonly />
+        <br>
+    </div>
+    <button (click)="goBack()">go back</button>
+    <button (click)="save(searchTags, title)">Save</button>
+</div>

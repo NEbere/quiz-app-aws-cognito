@@ -9,7 +9,7 @@ export class UserParametersService {
 
     getParameters(callback: Callback) {
         let cognitoUser = this.cognitoUtil.getCurrentUser();
-
+        
         if (cognitoUser != null) {
             cognitoUser.getSession(function (err, session) {
                 if (err)
@@ -29,6 +29,35 @@ export class UserParametersService {
             callback.callbackWithParam(null);
         }
 
+
+    }
+}
+
+@Injectable()
+export class GetUserParametersService {
+
+    constructor(public cognitoUtil: CognitoUtil) {
+    }
+
+    getParameters(): Promise<any> {
+        let cognitoUser = this.cognitoUtil.getCurrentUser();
+        if (cognitoUser != null) {
+            let promise = new Promise(function (resolve, reject) {
+                cognitoUser.getSession(function (err, session) {
+                    if (err) {
+                        console.log("UserParametersService: Couldn't retrieve the user");
+                    } else {
+                        cognitoUser.getUserAttributes(function (err, result) {
+                            if (err) { return reject(err); }
+                            else{
+                                return resolve(result)
+                            }
+                        })
+                    }
+                })
+            })
+            return promise
+        }
 
     }
 }

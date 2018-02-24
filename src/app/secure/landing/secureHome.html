@@ -18,14 +18,18 @@
             <!-- /.dropdown -->
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    <i class="fa fa-user fa-fw"></i>
+                    <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a [routerLink]="['/securehome/myprofile']"><i class="fa fa-user fa-fw"></i> User
-                        Profile</a>
+                    <li>
+                        <a [routerLink]="['/securehome/myprofile']">
+                            <i class="fa fa-user fa-fw"></i> User Profile
+                        </a>
                     </li>
                     <li class="divider"></li>
-                    <li><a [routerLink]="['/securehome/logout']">Logout</a>
+                    <li>
+                        <a [routerLink]="['/securehome/logout']">Logout</a>
                     </li>
                 </ul>
                 <!-- /.dropdown-user -->
@@ -38,19 +42,32 @@
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
                     <li>
-                        <a [routerLink]="['/securehome/myprofile']"><i class="fa fa-dashboard fa-fw"></i> My Profile</a>
+                        <a [routerLink]="['/securehome/myprofile']">
+                            <i class="fa fa-dashboard fa-fw"></i> My Profile</a>
                     </li>
                     <li>
-                        <a [routerLink]="['/securehome/jwttokens']"><i class="fa fa-table fa-fw"></i> JWT Tokens</a>
+                        <a [routerLink]="['/securehome/jwttokens']">
+                            <i class="fa fa-table fa-fw"></i> JWT Tokens</a>
                     </li>
                     <li>
-                        <a [routerLink]="['/securehome/useractivity']"><i class="fa fa-table fa-fw"></i> Login Data</a>
+                        <a [routerLink]="['/securehome/useractivity']">
+                            <i class="fa fa-table fa-fw"></i> Login Data</a>
                     </li>
-                    <li>
-                        <a [routerLink]="['/securehome/create-content']"><i class="fa fa-table fa-fw"></i> Create Content</a>
+                    <li *ngIf="userType"> 
+                        <a [routerLink]="['/securehome/create-content']">
+                            <i class="fa fa-table fa-fw"></i> Create Content</a>
                     </li>
-                    <li>
-                        <a [routerLink]="['/securehome/view-contents']"><i class="fa fa-table fa-fw"></i> View Contents</a>
+                    <li *ngIf="userType">
+                        <a [routerLink]="['/securehome/view-contents']">
+                            <i class="fa fa-table fa-fw"></i> View Contents</a>
+                    </li>
+                    <li *ngIf="!userType">
+                        <a [routerLink]="['/securehome/view-favorites']">
+                            <i class="fa fa-table fa-fw"></i> View Favorites</a>
+                    </li>
+                    <li *ngIf="!userType">
+                        <a [routerLink]="['/securehome/search']">
+                            <i class="fa fa-table fa-fw"></i> Search</a>
                     </li>
                 </ul>
             </div>

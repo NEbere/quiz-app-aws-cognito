@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';   
-import {Content,  ContentService} from '../content.service' 
+import { Router } from '@angular/router';
+import { Content, ContentService } from '../content.service'
+import { Callback, CognitoUtil } from "../../../service/cognito.service";
+import { UserParametersService } from "../../../service/user-parameters.service";
 
 @Component({
   selector: 'app-view-contents',
@@ -10,19 +12,31 @@ import {Content,  ContentService} from '../content.service'
 export class ViewContentsComponent implements OnInit {
   contents: Content;
   selectedContent: any;
+  public parameters: Array<any> = []
+  loading: boolean
 
-  constructor( 
+  constructor(
     private contentService: ContentService,
-    private router: Router
+    private router: Router,
+    public cognitoUtil: CognitoUtil,
+    public userParametersService: UserParametersService
   ) { }
-  
+
   ngOnInit(): void {
     this.getContents();
   }
-  getContents(): void{
+  getContents(): void {
+    this.loading = true
     this.contentService
-    .getContents()
-    .then(response => this.contents = response.items)
+      .getContents()
+      .then(response => {
+        this.contents = response.items
+        this.loading = false
+      })
+      .catch(error => {
+        console.log(error, 'Error getting contents')
+        return error
+      })
   }
 
   gotoDetail(content: any): void {
@@ -34,5 +48,6 @@ export class ViewContentsComponent implements OnInit {
     this.router.navigate(['securehome/create-content']);
     window.location.reload()
   }
+
 }
 

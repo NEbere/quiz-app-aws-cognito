@@ -4,7 +4,7 @@ import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {AppComponent} from "./app.component";
 import {UserRegistrationService} from "./service/user-registration.service";
-import {UserParametersService} from "./service/user-parameters.service";
+import {UserParametersService, GetUserParametersService} from "./service/user-parameters.service";
 import {UserLoginService} from "./service/user-login.service";
 import {CognitoUtil} from "./service/cognito.service";
 import {routing} from "./app.routes";
@@ -25,7 +25,13 @@ import { ViewContentsComponent } from './secure/creators/view-contents/view-cont
 import { ContentDetailComponent }  from './secure/creators/view-contents/content-detail.component';
 import { ContentService } from './secure/creators/content.service';
 import { getUserToken } from './service/getUserToken.service';
-
+import { SearchesComponent } from './secure/responder/searches/searches.component';
+import { SaveSearchComponent } from './secure/responder/searches/save-search.component';
+import { ViewFavoritesComponent } from './secure/responder/searches/view-favorites.component';
+import { SearchListComponent } from './secure/responder/searches/search-listings.component';
+import { EditSearchComponent } from './secure/responder/searches/edit-search.component'
+import {CanActivate} from "@angular/router";
+import { CreatorRouteGuard, ResponderRouteGuard } from './secure/route-guard.service';
 
 @NgModule({
     declarations: [
@@ -48,7 +54,11 @@ import { getUserToken } from './service/getUserToken.service';
         ContentDetailComponent,
         ViewContentsComponent,
         AppComponent,
-        
+        SearchesComponent,
+        SaveSearchComponent,
+        ViewFavoritesComponent,
+        SearchListComponent,
+        EditSearchComponent
         
     ],
     imports: [
@@ -63,8 +73,13 @@ import { getUserToken } from './service/getUserToken.service';
         UserRegistrationService,
         UserLoginService,
         UserParametersService,
+        GetUserParametersService,
         getUserToken,
-        ContentService],
+        ContentService,
+        CreatorRouteGuard,
+        ResponderRouteGuard
+        
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

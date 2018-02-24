@@ -2,17 +2,27 @@
     <h2>{{content.title}} details!</h2>
     <div>
         <label>Title: </label>
-        <input [(ngModel)]="content.title" placeholder="name" /> 
+        <input [(ngModel)]="content.title" placeholder="Title" />
         <br>
         <label>Content: </label>
-        <input [(ngModel)]="content.content" placeholder="name" /> 
+        <input [(ngModel)]="content.content" placeholder="Content" />
         <br>
-        <p><span>Separate each tag with a comma</span></p>
+        <p>
+            <span>Separate each tag with a comma</span>
+        </p>
         <label>Tags: </label>
-        <input [(ngModel)]="content.tags" placeholder="name" /> 
+        <input [(ngModel)]="content.tags" placeholder="Tags" />
         <br>
+        <br>
+        <div *ngIf="content.responses">
+            <p>
+                <span>Separate each response with a comma</span>
+            </p>
+            <label>Responses: </label>
+            <input [(ngModel)]="content.responses" placeholder="Responses" />
+            <br>
+        </div>
     </div>
     <button (click)="goBack()">go back</button>
     <button (click)="save()">Save</button>
 </div>
-
