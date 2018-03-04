@@ -28,6 +28,5 @@ export class CreateContentComponent implements OnInit {
 
   goBack(): void {
     this.router.navigate(['securehome/view-contents']);
-    window.location.reload()
   }
 }

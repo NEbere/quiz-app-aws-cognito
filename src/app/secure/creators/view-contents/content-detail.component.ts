@@ -26,9 +26,11 @@ export class ContentDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.params
       .switchMap((params: Params) => this.contentService.getContent(params['id']))
-      .subscribe(content => this.content = content);
+      .subscribe(content => {
+        this.content = content
+      });
   }
-
+  
   save(): void {
     let tagsArray = this.content.tags.replace(/\s+/g, '').split(",")
     let responsesArray
@@ -44,7 +46,6 @@ export class ContentDetailComponent implements OnInit {
 
   goBack(): void {
     this.router.navigate(['securehome/view-contents']);
-    window.location.reload()
   }
 
 }

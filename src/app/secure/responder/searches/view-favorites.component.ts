@@ -55,7 +55,6 @@ export class ViewFavoritesComponent implements OnInit {
 
   createFavorite(): void {
     this.router.navigate(['securehome/search']);
-    window.location.reload()
   }
 
 }

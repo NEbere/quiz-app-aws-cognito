@@ -2,18 +2,14 @@
   Loading...
 </div>
 <div *ngIf="favorites">
-  <div class=container>
-    <div class="row">
-      <div class="col-xs-6">
-        <h4>Saved searches</h4>
-        </div>
-        <div class="col-xs-6">
-            <button type="button" class="btn btn-default" (click)="createFavorite()">Create favorite</button>
-          </div>
 
-    </div>
+  <div class="pull-left">
+    <h2>Saved searches</h2>
   </div>
-
+  <div class="pull-right">
+    <br>
+    <button type="button" class="btn btn-default" (click)="createFavorite()">Create favorite</button>
+  </div>
 
   <table class="table table-striped table-bordered">
     <tr *ngFor="let favorite of favorites">

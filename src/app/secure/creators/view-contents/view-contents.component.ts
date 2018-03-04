@@ -46,7 +46,6 @@ export class ViewContentsComponent implements OnInit {
 
   goToCreatePage(): void {
     this.router.navigate(['securehome/create-content']);
-    window.location.reload()
   }
 
 }

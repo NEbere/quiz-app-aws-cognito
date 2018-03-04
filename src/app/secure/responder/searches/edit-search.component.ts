@@ -44,7 +44,6 @@ export class EditSearchComponent implements OnInit {
 
   goBack(): void {
     this.router.navigate(['securehome/view-contents']);
-    window.location.reload()
   }
 
 }

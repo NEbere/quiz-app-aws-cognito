@@ -38,7 +38,6 @@ export class SearchListComponent implements OnInit {
     this.loading = true
       this.contentService.searchContent(searchTags)
       .then(response => {
-        console.log(response, 'response - searchlistings')
         this.searchListings = response
         this.loading = false
       })

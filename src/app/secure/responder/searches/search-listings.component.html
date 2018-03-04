@@ -2,45 +2,29 @@
     Loading...
 </div>
 <div *ngIf="searchListings">
-    <div class=container>
-        <div class="row">
-            <div class="col-xs-6">
-                <h4>Search listings</h4>
-            </div>
-            <div class="col-xs-6">
-                <button type="button" class="btn btn-default" (click)="goBack()">Go back</button>
-            </div>
-        </div>
+    <div class="pull-left">
+        <h2>Search listings</h2>
     </div>
+    <div class="pull-right">
+        <br>
+        <button type="button" class="btn btn-default" (click)="goBack()">Go back</button>
+    </div>
+
 
     <table class="table table-striped table-bordered">
         <tr *ngFor="let content of searchListings">
-            <!-- <h3>
-                {{ content.tags.join() }}
-            </h3> -->
-            <!-- <br> -->
             <td>
                 <h5> {{ content.title }} </h5>
                 <p>
                     {{ content.content }}
                 </p>
                 <div>
-                    <span class="tagsInSearchListings" *ngFor="let tag of content.tags">
+                    <button type="button" class="btn btn-primary" *ngFor="let tag of content.tags">
                         {{ tag }}
-                    </span>
+                    </button>
+
                 </div>
             </td>
-            <!-- <div>
-                <h5> {{ content.title }} </h5>
-                <p>
-                    {{ content.content }}
-                </p>
-                <div>
-                    <span class="tagsInSearchListings" *ngFor="let tag of content.tags">
-                        {{ tag }}
-                    </span>
-                </div>
-            </div> -->
         </tr>
     </table>
 </div>
