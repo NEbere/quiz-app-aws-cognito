@@ -1,16 +1,22 @@
 <div *ngIf="searchTags">
     <h2>Save search</h2>
     <div>
-        <label>Title: </label>
-        <input [(ngModel)]="title" placeholder="Title" />
-        <br>
-        <p>
-            <span>Separate each tag with a comma</span>
-        </p>
-        <label>Tags: </label>
-        <input [(ngModel)]="searchTags" placeholder="Content" readonly />
-        <br>
+        <div class="form-group">
+            <label for="title">Title</label>
+            <br>
+            <input type="text" class="form-control" id="title" [(ngModel)]="title" placeholder="Title" name="title" required>
+        </div>
+        <div class="form-group">
+            <label for="tags">Tags</label>
+            <p>
+                <span>Separate each tag with a comma</span>
+            </p>
+            
+            <br>
+            <input type="text" class="form-control" id="tags" [(ngModel)]="searchTags" placeholder="Content"  name="tags" readonly>
+        </div>
+
     </div>
-    <button (click)="goBack()">Go back</button>
-    <button (click)="save(searchTags, title)">Save</button>
+    <button class="btn btn-default" (click)="goBack()">Go back</button>
+    <button class="btn btn-success"  (click)="save(searchTags, title)">Save</button>
 </div>

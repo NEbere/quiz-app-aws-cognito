@@ -10,7 +10,8 @@ import { Router } from '@angular/router';
 export class SearchesComponent implements OnInit {
   searchTags: any;
   searchResults:any;
-  favorites: any
+  favorites: any;
+  selectedContent: any;
 
   constructor(
     private contentService: ContentService,
@@ -46,4 +47,8 @@ export class SearchesComponent implements OnInit {
     this.router.navigate(['securehome/save-search', this.searchTags]);
   }
 
+  viewContent(content: any): void {
+    this.selectedContent = content;
+    this.router.navigate(['securehome/content-detail', this.selectedContent.id]);
+  }
 }
