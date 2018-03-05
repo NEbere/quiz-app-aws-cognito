@@ -16,8 +16,9 @@ import { Content, ContentService } from '../../creators/content.service';
 export class SearchListComponent implements OnInit {
   searchTags: any;
   title: any;
-  searchListings: any
-  loading: boolean
+  searchListings: any;
+  loading: boolean;
+  selectedContent: any;
 
   constructor(
     private contentService: ContentService,
@@ -47,8 +48,9 @@ export class SearchListComponent implements OnInit {
       })
   }
 
-  gotoDetail(content: any): void {
-    // Implement the detail for a search listing anf edit from there when API is made available
+  viewContent(content: any): void {
+    this.selectedContent = content;
+    this.router.navigate(['securehome/content-detail', this.selectedContent.id]);
   }
 
   goBack(): void {

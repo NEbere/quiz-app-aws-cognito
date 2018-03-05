@@ -84,6 +84,21 @@ export class ContentService {
             .catch(this.handleError);
     }
 
+    getResponses(): Promise<any> {
+        if(this.headers.keys().indexOf('user') == -1) {
+            this.headers.append('user', this.idToken)
+        }
+        let options = new RequestOptions({ headers: this.headers });
+        console.log(this.idToken)
+        return this.http.get(`${this.API_URL}/responses`, options)
+            .toPromise()
+            .then(response => {
+                console.log(response.json(), 'getReponses')
+                return response.json().body as any
+            })
+            .catch(this.handleError);
+    }
+
     getContent(id: string): Promise<any> {
         if(this.headers.keys().indexOf('user') == -1) {
             this.headers.append('user', this.idToken)
@@ -125,6 +140,23 @@ export class ContentService {
             .post(`${this.API_URL}/docs/`, JSON.stringify(content), options)
             .toPromise()
             .then(res => { return res.json().body as any })
+            .catch(this.handleError);
+    }
+
+    saveResponse(responseData: any): Promise<any> {
+        this.headers.append('Content-Type', 'application/json')
+        if(this.headers.keys().indexOf('user') == -1) {
+            this.headers.append('user', this.idToken)
+        }
+        let options = new RequestOptions({ headers: this.headers });
+        console.log(responseData,'response data from save service')
+        return this.http
+            .post(`${this.API_URL}/responses/`, JSON.stringify(responseData), options)
+            .toPromise()
+            .then(res => { 
+                console.log(res.json(), 'response from save response')
+                return res.json().body as any
+             })
             .catch(this.handleError);
     }
 

@@ -23,11 +23,13 @@ import {NewPasswordComponent} from "./public/auth/newpassword/newpassword.compon
 import { CreateContentComponent } from './secure/creators/create-content/create-content.component';
 import { ViewContentsComponent } from './secure/creators/view-contents/view-contents.component';
 import { ContentDetailComponent }  from './secure/creators/view-contents/content-detail.component';
+import { ResponderContentDetailComponent }  from './secure/responder/searches/content-detail.component';
 import { ContentService } from './secure/creators/content.service';
 import { getUserToken } from './service/getUserToken.service';
 import { SearchesComponent } from './secure/responder/searches/searches.component';
 import { SaveSearchComponent } from './secure/responder/searches/save-search.component';
 import { ViewFavoritesComponent } from './secure/responder/searches/view-favorites.component';
+import { ViewResponsesComponent } from './secure/responder/searches/view-responses.component';
 import { SearchListComponent } from './secure/responder/searches/search-listings.component';
 import { EditSearchComponent } from './secure/responder/searches/edit-search.component'
 import {CanActivate} from "@angular/router";
@@ -52,11 +54,13 @@ import { CreatorRouteGuard, ResponderRouteGuard } from './secure/route-guard.ser
         SecureHomeComponent,
         JwtComponent,
         ContentDetailComponent,
+        ResponderContentDetailComponent,
         ViewContentsComponent,
         AppComponent,
         SearchesComponent,
         SaveSearchComponent,
         ViewFavoritesComponent,
+        ViewResponsesComponent,
         SearchListComponent,
         EditSearchComponent
         

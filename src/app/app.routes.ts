@@ -14,9 +14,11 @@ import {NewPasswordComponent} from "./public/auth/newpassword/newpassword.compon
 import { CreateContentComponent } from './secure/creators/create-content/create-content.component';
 import { ViewContentsComponent } from './secure/creators/view-contents/view-contents.component';
 import { ContentDetailComponent } from './secure/creators/view-contents/content-detail.component';
+import { ResponderContentDetailComponent } from './secure/responder/searches/content-detail.component';
 import { SearchesComponent } from './secure/responder/searches/searches.component';
 import { SaveSearchComponent } from './secure/responder/searches/save-search.component';
 import { ViewFavoritesComponent } from './secure/responder/searches/view-favorites.component';
+import { ViewResponsesComponent } from './secure/responder/searches/view-responses.component';
 import { SearchListComponent } from './secure/responder/searches/search-listings.component';
 import { EditSearchComponent } from './secure/responder/searches/edit-search.component'
 import {CreatorRouteGuard, ResponderRouteGuard} from "./secure/route-guard.service";
@@ -59,10 +61,12 @@ const secureHomeRoutes: Routes = [
         {path: 'useractivity', component: UseractivityComponent},
         {path: 'create-content', component: CreateContentComponent, canActivate: [CreatorRouteGuard]},
         {path: 'detail/:id', component: ContentDetailComponent, canActivate: [CreatorRouteGuard]},
+        {path: 'content-detail/:id', component: ResponderContentDetailComponent, canActivate: [ResponderRouteGuard]},
         {path: 'edit-search/:id', component: EditSearchComponent, canActivate: [ResponderRouteGuard]},
         {path: 'save-search/:tags', component: SaveSearchComponent, canActivate: [ResponderRouteGuard]},
         {path: 'view-contents', component: ViewContentsComponent, canActivate: [CreatorRouteGuard]},
         {path: 'view-favorites', component: ViewFavoritesComponent, canActivate: [ResponderRouteGuard]},
+        {path: 'view-responses', component: ViewResponsesComponent, canActivate: [ResponderRouteGuard]},
         {path: 'search-listings/:tags', component: SearchListComponent, canActivate: [ResponderRouteGuard]},
         {path: 'search', component: SearchesComponent, canActivate: [ResponderRouteGuard]},
         {path: '', component: MyProfileComponent}]

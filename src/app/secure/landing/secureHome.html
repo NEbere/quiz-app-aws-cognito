@@ -59,8 +59,11 @@
                         <a [routerLink]="['/securehome/view-contents']"> View Contents</a>
                     </li>
                     <li *ngIf="!userType">
-                        <a [routerLink]="['/securehome/view-favorites']"> View Favorites</a>
+                        <a [routerLink]="['/securehome/view-favorites']"> View Favorites</a> 
                     </li>
+                    <li *ngIf="!userType">
+                            <a [routerLink]="['/securehome/view-responses']"> View Responses</a>
+                        </li>
                     <li *ngIf="!userType">
                         <a [routerLink]="['/securehome/search']"> Search</a>
                     </li>
